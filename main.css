@@ -1,0 +1,44 @@
+*{
+  font-family: 'Inter', sans-serif;
+  list-style: none;
+
+  color: white;
+}
+body{
+  background-image: linear-gradient(to right top, #05372c, #005452, #007181, #008eb5, #12a9eb);
+}
+.heading{
+  font-size: 30px;
+}
+.btn{
+  background-color: transparent;
+  border: 1px solid;
+  padding: 12px 25px;
+  border-radius: 10px;
+}
+.btn-list {
+
+  display: flex;
+  
+}
+.btn-list li{
+  margin: 0 6px;
+}
+@media screen and (max-width: 576px) {
+  .btn-list{
+
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-list li{
+    margin: 6px 0px;
+  }
+  #quote{
+    text-align: center;
+    font-size: 16px;
+  }
+  .heading{
+    text-align: center;
+    font-size: 30px;
+  }
+}
