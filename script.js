@@ -1,5 +1,6 @@
 const URL = "https://type.fit/api/quotes";
 const quote = document.getElementById("quote");
+const author = document.getElementById("author");
 const copyBtn = document.getElementById("copy");
 const speakBtn = document.getElementById("speak-btn");
 const newQuote = document.getElementById("new-quote");
@@ -7,18 +8,15 @@ const loader = document.getElementById("loader");
 var demo = false;
 let quoteData;
 try{
-    // loading spinner
-    window.addEventListener("load",()=>{
-        loader.classList.add("hidden")
-    })
     // this function create new quote
     newQuote.addEventListener("click",(e)=>{
         fetch(URL)
     .then(res=> res.json())
     .then(data=> {
+        console.log(data);
         quoteData = data[Math.ceil(Math.random()*data.length)];
-        console.log(quoteData.text);
         quote.innerText = quoteData.text;
+        author.innerText = quoteData.author;
     })
     })
     fetch(URL)
@@ -27,6 +25,7 @@ try{
         quoteData = data[Math.ceil(Math.random()*data.length)];
         console.log(quoteData.text);
         quote.innerText = quoteData.text;
+        author.innerText = quoteData.author;
     })
 
     // this event create for speak quote.
@@ -42,7 +41,7 @@ try{
             demo = false;
         }else if (demo==false) {
             speakBtn.innerText = "stop speak";
-            let speak = new SpeechSynthesisUtterance(`${quote.innerText}`)
+            let speak = new SpeechSynthesisUtterance(`${quote.innerText} author name ${author.innerText}`)
             speechSynthesis.speak(speak);
             
             
